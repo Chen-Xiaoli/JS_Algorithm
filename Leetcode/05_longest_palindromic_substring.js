@@ -14,7 +14,7 @@ var longestPalindrome = function(s) {
   }
   let subStr = '';
   let mexDis = 0;
-  //呈倒三角开遍历，先里后外
+  //呈倒三角开始遍历，先里后外
   for(let i=s.length-1; i>=0; i--) {
     for(let j=i; j < s.length; j++){
       d[i][j] = (s[i]==s[j]) && (((j-i)<3) || d[i+1][j-1])
@@ -34,6 +34,7 @@ var longestPalindrome = function(s) {
 
 //With O(n^2) time complexity, O(n) sapce complexity. Traverse around the center point to both sides
 var longestPalindrome = function(s) {
+  //把字符串长度变成奇数，方便寻找中心点
   let sn = ['^', '#', ...[...s].join('#'), '#', '$'];
   let antStr = '';
   for(let i=1, i<sn.length-1; i++){
@@ -51,6 +52,7 @@ var longestPalindrome = function(s) {
 //With O(n) time complexity, O(n) sapece complexity. Manacher's Algorithm
 //c is center point, and r is right point for the maximum coverage point.
 var longestPalindrome = function(s) {
+    //把字符串长度变成奇数，方便寻找中心点
     let sn = ['^', '#', ...[...s].join('#'), '#', '$'];
     let p = new Array(sn.length).fill(0);
     let c, r = 0;
